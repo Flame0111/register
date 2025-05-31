@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>แบบฟอร์มขอเป็นแฟนอย่างเป็นทางการ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>หนังสือแสดงความจำนง</h1>
+    <p>ข้าพเจ้าขอแสดงความจำนงสมัครขอเป็นแฟนกับท่าน<br>โดยความตั้งใจอย่างบริสุทธิ์ใจ</p>
+    
+    <form id="loveForm">
+      <label for="name">ชื่อ - นามสกุล:</label>
+      <input type="text" id="name" required>
+
+      <label for="reason">เหตุผลที่อยากเป็นแฟน:</label>
+      <textarea id="reason" rows="4" required></textarea>
+
+      <label for="consent">ความสมัครใจ:</label>
+      <select id="consent" required>
+        <option value="">-- กรุณาเลือก --</option>
+        <option value="accept">ข้าพเจ้ายินยอมอย่างเต็มใจ</option>
+        <option value="decline">ขอปฏิเสธด้วยความเคารพ</option>
+      </select>
+
+      <button type="submit">ส่งแบบฟอร์ม</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("loveForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const reason = document.getElementById("reason").value.trim();
+      const consent = document.getElementById("consent").value;
+
+      const result = document.getElementById("result");
+      if (consent === "accept") {
+        result.innerHTML = `<strong>ขอบคุณค่ะ/ครับ ${name}</strong><br>เราขอยินดีต้อนรับคุณเข้าสู่สถานะแฟนอย่างเป็นทางการ ❤️`;
+      } else {
+        result.innerHTML = `คิดอีกทีได้มั้ยคะ ${name}<br>😊`;
+      }
+    });
+  </script>
+
+</body>
+</html>
